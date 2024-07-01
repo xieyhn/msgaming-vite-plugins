@@ -20,8 +20,8 @@ const res = [r('a.png'), r('b.png')]
 同时，`r()` 还可以处理多语言资源的路径，例如：
 
 ```ts
-// 在中文环境下，会导入 ./zh-CN/a.png
-// 在英文环境下，会导入 ./en-US/a.png
+// 在中文环境下，会导入 ./zh_CN/a.png
+// 在英文环境下，会导入 ./en_US/a.png
 // ...
 r('./[locale]/a.png')
 ```
