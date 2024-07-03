@@ -53,3 +53,57 @@ export default defineConfig({
 ```
 
 该插件会将 sprite 资源的 PNG 文件一并构建，同时还会将 JSON 文件中的路径替换为构建后的路径。
+
+## 导入 spine 资源
+
+通常一个 spine 资源由一个 JSON 文件和多个 atlas 文件组成，在 PIXI 开发中，可以通过以下方式加载：
+
+```ts
+import data from './data.json'
+
+PIXI.Assets.load(data).then()
+```
+
+但此种做法在 vite 项目中，vite 只会将 JSON 文件构建，而不知这个 spine 资源的 atlas 文件的存在。为了解决这个问题，我们可以使用 `spine()` 插件
+
+```ts
+// vite.config.ts
+
+export default defineConfig({
+  plugins: [
+    spine()
+  ]
+})
+```
+
+该插件会将 spine 资源的 atlas 文件一并构建，并会解析 atlas 中的其它资源导入，将这些资源一并构建。
+
+## 导入 lottie 资源
+
+通常一个 lottie 资源由一个 JSON 文件组成和多张图片资源，可以通过以下方式加载：
+
+```ts
+import data from './data.json'
+
+lottie.loadAnimation({
+  container: document.getElementById('container'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  animationData: data
+})
+```
+
+但此种做法在 vite 项目中，vite 只会将 JSON 文件构建，而不知这个 lottie 资源的图片资源的存在。为了解决这个问题，我们可以使用 `lottie()` 插件
+
+```ts
+// vite.config.ts
+
+export default defineConfig({
+  plugins: [
+    lottie()
+  ]
+})
+```
+
+该插件会将 lottie 资源的图片资源一并构建，并会解析 JSON 中的其它资源导入，将这些资源一并构建。
