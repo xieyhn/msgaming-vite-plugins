@@ -35,7 +35,7 @@ r('./[locale]/a.png')
 通常一个 sprite 资源由一个 JSON 文件和一张 PNG 图片组成，在 PIXI 开发中，可以通过以下方式加载：
 
 ```ts
-import a from './a.json'
+import a from './a.json?sprite'
 
 PIXI.Assets.load(a).then()
 ```
@@ -59,7 +59,7 @@ export default defineConfig({
 通常一个 spine 资源由一个 JSON 文件和多个 atlas 文件组成，在 PIXI 开发中，可以通过以下方式加载：
 
 ```ts
-import data from './data.json'
+import data from './data.json?spine'
 
 PIXI.Assets.load(data).then()
 ```
@@ -83,7 +83,7 @@ export default defineConfig({
 通常一个 lottie 资源由一个 JSON 文件组成和多张图片资源，可以通过以下方式加载：
 
 ```ts
-import data from './data.json'
+import data from './data.json?lottie'
 
 lottie.loadAnimation({
   container: document.getElementById('container'),
